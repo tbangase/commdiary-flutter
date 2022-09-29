@@ -1,7 +1,7 @@
+import 'package:commdiary/story_book_sample.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:commdiary/story_book_sample.dart';
 
 /// Define a [StateNotifierProvider] to provide a [Counter] instance.
 final counterProvider = StateNotifierProvider((_) => Counter());
@@ -26,14 +26,11 @@ void main() {
     case Mode.storyBook:
       runApp(const SampleStoryBook());
       break;
-    default:
-      runApp(const SampleStoryBook());
-      break;
   }
 }
 
 class CounterApp extends HookConsumerWidget {
-  const CounterApp({Key? key}) : super(key: key);
+  const CounterApp({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

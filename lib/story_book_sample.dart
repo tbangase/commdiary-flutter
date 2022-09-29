@@ -1,25 +1,22 @@
-import 'package:flutter/material.dart';
-import 'package:storybook_flutter/storybook_flutter.dart';
 import 'package:commdiary/main.dart';
+import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:storybook_flutter/storybook_flutter.dart';
 
 final List<Plugin> _plugins = initializePlugins(
-  contentsSidePanel: false,
-  knobsSidePanel: false,
   initialDeviceFrameData: DeviceFrameData(
     device: Devices.ios.iPhoneSE,
   ),
 );
 
 class SampleStoryBook extends StatelessWidget {
-  const SampleStoryBook({Key? key}) : super(key: key);
+  const SampleStoryBook({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Storybook(
       initialStory: 'Screen/Default',
       plugins: _plugins,
-      showPanel: true,
       stories: [
         Story(
           name: 'Screens/Default',
@@ -36,7 +33,6 @@ class SampleStoryBook extends StatelessWidget {
               elevation: context.knobs.slider(
                 label: 'AppBar elevation',
                 initial: 4,
-                min: 0,
                 max: 10,
                 description: 'Elevation of the app bar.',
               ),

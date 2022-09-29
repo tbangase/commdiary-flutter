@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
 
 class WidgetbookHotReload extends StatelessWidget {
-  const WidgetbookHotReload({Key? key}) : super(key: key);
+  const WidgetbookHotReload({super.key});
 
   @override
   Widget build(BuildContext context) {
