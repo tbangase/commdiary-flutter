@@ -1,3 +1,4 @@
+import 'package:commdiary/widgets/atoms/button.dart';
 import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
 
@@ -21,6 +22,17 @@ class WidgetbookHotReload extends StatelessWidget {
                       onPressed: () {},
                       child: const Icon(Icons.add),
                     );
+                  },
+                ),
+              ],
+            ),
+            WidgetbookComponent(
+              name: 'Register Button',
+              useCases: [
+                WidgetbookUseCase(
+                  name: 'Register',
+                  builder: (context) {
+                    return RegisterButton();
                   },
                 ),
               ],

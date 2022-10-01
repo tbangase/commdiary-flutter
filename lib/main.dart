@@ -1,4 +1,3 @@
-import 'package:commdiary/story_book_sample.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -11,22 +10,8 @@ class Counter extends StateNotifier<int> {
   void increment() => state++;
 }
 
-enum Mode {
-  normal,
-  storyBook,
-}
-
 void main() {
-  const mode = Mode.normal;
-
-  switch (mode) {
-    case Mode.normal:
-      runApp(const ProviderScope(child: CounterApp()));
-      break;
-    case Mode.storyBook:
-      runApp(const SampleStoryBook());
-      break;
-  }
+  runApp(const ProviderScope(child: CounterApp()));
 }
 
 class CounterApp extends HookConsumerWidget {
