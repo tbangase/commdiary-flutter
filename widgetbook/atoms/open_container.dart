@@ -1,4 +1,4 @@
-import 'package:commdiary/widgets/atoms/open_container.dart';
+import 'package:commdiary/widgets/atom/open_container.dart';
 import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
 
