@@ -33,7 +33,7 @@ class WidgetbookHotReload extends StatelessWidget {
                 WidgetbookUseCase(
                   name: 'Register',
                   builder: (context) {
-                    return RegisterButton();
+                    return const RegisterButton();
                   },
                 ),
               ],
