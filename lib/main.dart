@@ -1,14 +1,9 @@
+import 'package:commdiary/widgets/molecule/bottom_navigation_bar.dart';
+import 'package:commdiary/widgets/molecule/counter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-
-/// Define a [StateNotifierProvider] to provide a [Counter] instance.
-final counterProvider = StateNotifierProvider((_) => Counter());
-
-class Counter extends StateNotifier<int> {
-  Counter() : super(0);
-  void increment() => state++;
-}
+import '../../model/mode.dart';
 
 void main() {
   runApp(const ProviderScope(child: CounterApp()));
@@ -19,37 +14,22 @@ class CounterApp extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(counterProvider);
-    // isWhiteBackGround is false when Widget built at the first time.
-    final isWhiteBackGround = useState(false);
+    final isDarkMode = useState(true);
+
+    void onSelectChanged(int index) {
+      ref.read(screenModeProvider.notifier).mode = Mode.values[index];
+    }
 
     return MaterialApp(
+      theme: isDarkMode.value ? ThemeData.dark() : ThemeData.light(),
       home: Scaffold(
-        backgroundColor: isWhiteBackGround.value ? Colors.white : Colors.black,
-        appBar: AppBar(
-          title: const Text('CounterAp'),
-          leading: IconButton(
-            icon: const Icon(Icons.settings),
-            onPressed: () => isWhiteBackGround.value = !isWhiteBackGround.value,
-          ),
-          // backgroundColor:
-          //     isWhiteBackGround.value ? Colors.white : Colors.black,
-        ),
-        body: Center(
-          child: Text(
-            state.toString(),
-            style: TextStyle(
-              fontSize: 30,
-              fontWeight: FontWeight.bold,
-              color: isWhiteBackGround.value ? Colors.black : Colors.white,
-            ),
-          ),
-        ),
+        body: Counter(),
         floatingActionButton: FloatingActionButton(
-          onPressed: () => ref.read(counterProvider.notifier).increment(),
+          onPressed: () => isDarkMode.value = !isDarkMode.value,
           tooltip: 'Increment',
-          child: const Icon(Icons.add),
+          child: const Icon(Icons.settings),
         ),
+        bottomNavigationBar: BottomNavBar(onSelectChanged),
       ),
     );
   }
